@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VacunDesktop.Models;
 
 namespace VacunDesktop.Presentation
 {
     public partial class FrmMenuPrincipal : Form
     {
+        public static Usuario Usuario;
+
         public FrmMenuPrincipal()
         {
             InitializeComponent();
@@ -79,6 +82,31 @@ namespace VacunDesktop.Presentation
             var frmListadoCalendariosYVacunas = new FrmListadoCalendariosVacunas();
             frmListadoCalendariosYVacunas.ShowDialog();
 
+        }
+
+        private void FrmMenuPrincipal_Activated(object sender, EventArgs e)
+        {
+            if (Usuario == null)
+            {
+                //si no hay nadie logeado, entonces mostramos el formulario de Login
+                var frmLogin = new FrmLogin(this);
+                frmLogin.ShowDialog();
+                if (Usuario != null)
+                {
+                    //dependiendo el tipo de usuario, habilitamos los distintos menues para que tengan acceso.
+                    MnuUsuario.Enabled = Usuario.TipoUsuario == TipoUsuarioEnum.Administrador ? true : false;    
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
+        }
+
+            private void SubMnuUsuario_Click(object sender, EventArgs e)
+        {
+            var frmGestionUsuarios = new FrmGestionUsuario();
+            frmGestionUsuarios.ShowDialog();
         }
     }
 }

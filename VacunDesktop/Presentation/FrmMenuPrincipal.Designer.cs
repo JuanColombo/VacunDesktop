@@ -38,13 +38,15 @@
             this.mnuItemVacuna = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListadoDeVacunas = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListadoCalendarios = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCalendariosYVacunas = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picIsp20 = new System.Windows.Forms.PictureBox();
             this.BarraHerramientas = new System.Windows.Forms.ToolStrip();
             this.BtnTutores = new System.Windows.Forms.ToolStripButton();
             this.BtnCalendarios = new System.Windows.Forms.ToolStripButton();
-            this.mnuCalendariosYVacunas = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuUsuario = new System.Windows.Forms.ToolStripMenuItem();
+            this.SubMnuUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIsp20)).BeginInit();
@@ -56,6 +58,7 @@
             this.menuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuItemPrincipal,
             this.mnuItemListado,
+            this.MnuUsuario,
             this.mnuItemSalir});
             this.menuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.menuPrincipal.Name = "menuPrincipal";
@@ -127,6 +130,13 @@
             this.mnuListadoCalendarios.Text = "Listado de Calendarios";
             this.mnuListadoCalendarios.Click += new System.EventHandler(this.mnuListadoCalendarios_Click);
             // 
+            // mnuCalendariosYVacunas
+            // 
+            this.mnuCalendariosYVacunas.Name = "mnuCalendariosYVacunas";
+            this.mnuCalendariosYVacunas.Size = new System.Drawing.Size(232, 22);
+            this.mnuCalendariosYVacunas.Text = "Listado Calendarios y Vacunas";
+            this.mnuCalendariosYVacunas.Click += new System.EventHandler(this.mnuCalendariosYVacunas_Click);
+            // 
             // mnuItemSalir
             // 
             this.mnuItemSalir.Name = "mnuItemSalir";
@@ -190,12 +200,20 @@
             this.BtnCalendarios.ToolTipText = "Gestion de Calendarios";
             this.BtnCalendarios.Click += new System.EventHandler(this.BtnCalendarios_Click);
             // 
-            // mnuCalendariosYVacunas
+            // MnuUsuario
             // 
-            this.mnuCalendariosYVacunas.Name = "mnuCalendariosYVacunas";
-            this.mnuCalendariosYVacunas.Size = new System.Drawing.Size(232, 22);
-            this.mnuCalendariosYVacunas.Text = "Listado Calendarios y Vacunas";
-            this.mnuCalendariosYVacunas.Click += new System.EventHandler(this.mnuCalendariosYVacunas_Click);
+            this.MnuUsuario.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SubMnuUsuario});
+            this.MnuUsuario.Name = "MnuUsuario";
+            this.MnuUsuario.Size = new System.Drawing.Size(123, 20);
+            this.MnuUsuario.Text = "Gestion de Usuarios";
+            // 
+            // SubMnuUsuario
+            // 
+            this.SubMnuUsuario.Name = "SubMnuUsuario";
+            this.SubMnuUsuario.Size = new System.Drawing.Size(119, 22);
+            this.SubMnuUsuario.Text = "Usuarios";
+            this.SubMnuUsuario.Click += new System.EventHandler(this.SubMnuUsuario_Click);
             // 
             // FrmMenuPrincipal
             // 
@@ -210,6 +228,7 @@
             this.Name = "FrmMenuPrincipal";
             this.Text = "Aplicacion de escritorio de Vacunas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.FrmMenuPrincipal_Activated);
             this.menuPrincipal.ResumeLayout(false);
             this.menuPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -240,6 +259,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuListadoDeVacunas;
         private System.Windows.Forms.ToolStripMenuItem mnuListadoCalendarios;
         private System.Windows.Forms.ToolStripMenuItem mnuCalendariosYVacunas;
+        private System.Windows.Forms.ToolStripMenuItem MnuUsuario;
+        private System.Windows.Forms.ToolStripMenuItem SubMnuUsuario;
     }
 }
 
