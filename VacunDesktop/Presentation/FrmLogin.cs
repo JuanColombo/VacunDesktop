@@ -25,8 +25,13 @@ namespace VacunDesktop.Presentation
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (ValidarAcceso())               
-            this.Close();            
+            Acceder();
+        }
+
+        private void Acceder()
+        {
+            if (ValidarAcceso())
+                this.Close();
             else
             {
                 intentosFallidos++;
@@ -36,7 +41,7 @@ namespace VacunDesktop.Presentation
                 else
                 {
                     MessageBox.Show($"Error en ingresar, usuario o contraseña incorrectos, te quedan {intentosRestantes} intentos");
-                    
+
                     txtUsuario.Text = "";
                     txtPassword.Text = "";
                 }
@@ -50,8 +55,7 @@ namespace VacunDesktop.Presentation
             var listaUsuarios = db.Usuarios.Where(u => u.User.Equals(txtUsuario.Text)).Where(u => u.Password.Equals(pass)).ToList();
             if (listaUsuarios.Count > 0)
             {
-                FrmMenuPrincipal.Usuario = listaUsuarios.ElementAt(0);
-                MessageBox.Show($"Datos Ingresador Correctamente. Bienvenido");
+                FrmMenuPrincipal.Usuario = listaUsuarios.ElementAt(0);            
                 return true;
             }
             else
@@ -64,5 +68,7 @@ namespace VacunDesktop.Presentation
         {
             this.Close();
         }
+
+
     }
 }

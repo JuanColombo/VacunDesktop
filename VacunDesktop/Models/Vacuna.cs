@@ -5,7 +5,7 @@ using System.Text;
 
 namespace VacunDesktop.Models
 {
-    public class Vacuna
+    public class Vacuna : ModeloBase
     {
         public int Id { get; set; }
         [Required]

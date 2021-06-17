@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace VacunDesktop.Models
 {
-    public class Paciente
+    public class Paciente : ModeloBase
     {
-        public int Id { get; set; }
-        [Required]
-        public string Nombre { get; set; }
+
         [Required]
         public string Apellido { get; set; }
         [Required]

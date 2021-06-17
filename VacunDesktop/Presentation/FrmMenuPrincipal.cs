@@ -93,8 +93,8 @@ namespace VacunDesktop.Presentation
                 frmLogin.ShowDialog();
                 if (Usuario != null)
                 {
-                    //dependiendo el tipo de usuario, habilitamos los distintos menues para que tengan acceso.
-                    MnuUsuario.Enabled = Usuario.TipoUsuario == TipoUsuarioEnum.Administrador ? true : false;    
+                    //dependiendo el tipo de usuario, habilitamos los distintos menues para que tengan acceso
+                    MnuUsuario.Enabled = Usuario.TipoUsuario == TipoUsuarioEnum.Administrador ? true : false; 
                 }
                 else
                 {
@@ -107,6 +107,12 @@ namespace VacunDesktop.Presentation
         {
             var frmGestionUsuarios = new FrmGestionUsuario();
             frmGestionUsuarios.ShowDialog();
+        }
+
+        private void SubMnuCambioContraseña_Click(object sender, EventArgs e)
+        {
+            var frmCambioContraseña = new FrmCambioContrasena(FrmMenuPrincipal.Usuario.Id);
+            frmCambioContraseña.ShowDialog();
         }
     }
 }

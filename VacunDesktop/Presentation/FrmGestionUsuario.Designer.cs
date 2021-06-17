@@ -35,6 +35,7 @@ namespace VacunDesktop.Presentation
             this.BtnEditarUsuario = new System.Windows.Forms.Button();
             this.BtnAñadirUsuario = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnCambiarContraseña = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@ namespace VacunDesktop.Presentation
             this.dataGridUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridUsuarios.BackgroundColor = System.Drawing.SystemColors.MenuHighlight;
             this.dataGridUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridUsuarios.Location = new System.Drawing.Point(12, 3);
+            this.dataGridUsuarios.Location = new System.Drawing.Point(12, 42);
             this.dataGridUsuarios.Name = "dataGridUsuarios";
             this.dataGridUsuarios.ReadOnly = true;
             this.dataGridUsuarios.RowTemplate.Height = 25;
@@ -52,7 +53,7 @@ namespace VacunDesktop.Presentation
             // 
             // BtnEliminarUsuario
             // 
-            this.BtnEliminarUsuario.Location = new System.Drawing.Point(428, 277);
+            this.BtnEliminarUsuario.Location = new System.Drawing.Point(280, 307);
             this.BtnEliminarUsuario.Name = "BtnEliminarUsuario";
             this.BtnEliminarUsuario.Size = new System.Drawing.Size(92, 35);
             this.BtnEliminarUsuario.TabIndex = 2;
@@ -62,7 +63,7 @@ namespace VacunDesktop.Presentation
             // 
             // BtnEditarUsuario
             // 
-            this.BtnEditarUsuario.Location = new System.Drawing.Point(282, 277);
+            this.BtnEditarUsuario.Location = new System.Drawing.Point(165, 307);
             this.BtnEditarUsuario.Name = "BtnEditarUsuario";
             this.BtnEditarUsuario.Size = new System.Drawing.Size(96, 35);
             this.BtnEditarUsuario.TabIndex = 1;
@@ -72,7 +73,7 @@ namespace VacunDesktop.Presentation
             // 
             // BtnAñadirUsuario
             // 
-            this.BtnAñadirUsuario.Location = new System.Drawing.Point(149, 277);
+            this.BtnAñadirUsuario.Location = new System.Drawing.Point(51, 307);
             this.BtnAñadirUsuario.Name = "BtnAñadirUsuario";
             this.BtnAñadirUsuario.Size = new System.Drawing.Size(90, 35);
             this.BtnAñadirUsuario.TabIndex = 0;
@@ -82,7 +83,7 @@ namespace VacunDesktop.Presentation
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(632, 292);
+            this.btnSalir.Location = new System.Drawing.Point(610, 322);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(92, 35);
             this.btnSalir.TabIndex = 3;
@@ -90,11 +91,22 @@ namespace VacunDesktop.Presentation
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btnCambiarContraseña
+            // 
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(404, 307);
+            this.btnCambiarContraseña.Name = "btnCambiarContraseña";
+            this.btnCambiarContraseña.Size = new System.Drawing.Size(127, 35);
+            this.btnCambiarContraseña.TabIndex = 4;
+            this.btnCambiarContraseña.Text = "CambiarContraseña";
+            this.btnCambiarContraseña.UseVisualStyleBackColor = true;
+            this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
+            // 
             // FrmGestionUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 339);
+            this.ClientSize = new System.Drawing.Size(748, 364);
+            this.Controls.Add(this.btnCambiarContraseña);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.BtnEliminarUsuario);
             this.Controls.Add(this.BtnEditarUsuario);
@@ -118,5 +130,6 @@ namespace VacunDesktop.Presentation
         private System.Windows.Forms.Button BtnEditarUsuario;
         private System.Windows.Forms.Button BtnAñadirUsuario;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnCambiarContraseña;
     }
 }

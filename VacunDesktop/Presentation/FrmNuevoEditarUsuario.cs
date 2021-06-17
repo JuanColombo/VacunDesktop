@@ -29,6 +29,7 @@ namespace VacunDesktop.Presentation
                 IdEditar = idSeleccionado;
                 //llamamos al metodo de carga datos
                 CargarDatosDelUsuario();
+                txtContraseña.Enabled = false;
             }
         }
 
@@ -39,15 +40,12 @@ namespace VacunDesktop.Presentation
                 usuario = db.Usuarios.Find(IdEditar);
                 txtNombreUsuarioCompleto.Text = usuario.Nombre;
                 txtNombreUsers.Text = usuario.User;
-                txtContraseña.Text = usuario.Password;
                 cboTipoUsuario.SelectedItem =usuario.TipoUsuario;
-
             }
         }
 
         private void LlenarComboTipoUsuario()
         {
-            
            cboTipoUsuario.DataSource = Enum.GetValues(typeof(TipoUsuarioEnum));
         }
 
@@ -59,10 +57,11 @@ namespace VacunDesktop.Presentation
                 //le asignamos a sus propiedades el valor de cada uno de los cuadros de texto
                 usuario.Nombre = txtNombreUsuarioCompleto.Text;
                 usuario.User = txtNombreUsers.Text;
-                usuario.Password = HelperVacuna.ObtenerSha256Hash(txtContraseña.Text);
-                usuario.TipoUsuario = (TipoUsuarioEnum)cboTipoUsuario.SelectedValue;            
+                usuario.TipoUsuario = (TipoUsuarioEnum)cboTipoUsuario.SelectedValue;
+                //usuario.Password = HelperVacuna.ObtenerSha256Hash(txtContraseña.Text);
                 if (IdEditar == null)
                 { // agregamos el objeto Usuarios a la Base De datos
+                    usuario.Password = HelperVacuna.ObtenerSha256Hash(txtContraseña.Text);
                     db.Usuarios.Add(usuario);
                     MessageBox.Show("Usuario " + usuario.Nombre + " cargado con exito");
                 }
@@ -80,6 +79,8 @@ namespace VacunDesktop.Presentation
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+
+          
         }
     }
 }

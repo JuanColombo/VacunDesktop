@@ -9,7 +9,7 @@ namespace VacunDesktop.Models
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS; Database = VacunWebContext; User Id = sa; Password = ; MultipleActiveResultSets = True; ");
+            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS; Database = VacunWebContext; User Id = sa; Password = juampi582674 ; MultipleActiveResultSets = True; ");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder){
             

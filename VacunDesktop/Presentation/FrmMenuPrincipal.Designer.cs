@@ -39,17 +39,16 @@
             this.mnuListadoDeVacunas = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListadoCalendarios = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCalendariosYVacunas = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuUsuario = new System.Windows.Forms.ToolStripMenuItem();
+            this.SubMnuUsuario = new System.Windows.Forms.ToolStripMenuItem();
+            this.SubMnuCambioContraseña = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.picIsp20 = new System.Windows.Forms.PictureBox();
             this.BarraHerramientas = new System.Windows.Forms.ToolStrip();
             this.BtnTutores = new System.Windows.Forms.ToolStripButton();
             this.BtnCalendarios = new System.Windows.Forms.ToolStripButton();
-            this.MnuUsuario = new System.Windows.Forms.ToolStripMenuItem();
-            this.SubMnuUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picIsp20)).BeginInit();
             this.BarraHerramientas.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,6 +136,29 @@
             this.mnuCalendariosYVacunas.Text = "Listado Calendarios y Vacunas";
             this.mnuCalendariosYVacunas.Click += new System.EventHandler(this.mnuCalendariosYVacunas_Click);
             // 
+            // MnuUsuario
+            // 
+            this.MnuUsuario.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SubMnuUsuario,
+            this.SubMnuCambioContraseña});
+            this.MnuUsuario.Name = "MnuUsuario";
+            this.MnuUsuario.Size = new System.Drawing.Size(123, 20);
+            this.MnuUsuario.Text = "Gestion de Usuarios";
+            // 
+            // SubMnuUsuario
+            // 
+            this.SubMnuUsuario.Name = "SubMnuUsuario";
+            this.SubMnuUsuario.Size = new System.Drawing.Size(195, 22);
+            this.SubMnuUsuario.Text = "Usuarios";
+            this.SubMnuUsuario.Click += new System.EventHandler(this.SubMnuUsuario_Click);
+            // 
+            // SubMnuCambioContraseña
+            // 
+            this.SubMnuCambioContraseña.Name = "SubMnuCambioContraseña";
+            this.SubMnuCambioContraseña.Size = new System.Drawing.Size(195, 22);
+            this.SubMnuCambioContraseña.Text = "Cambio de Contraseña";
+            this.SubMnuCambioContraseña.Click += new System.EventHandler(this.SubMnuCambioContraseña_Click);
+            // 
             // mnuItemSalir
             // 
             this.mnuItemSalir.Name = "mnuItemSalir";
@@ -146,25 +168,16 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::VacunDesktop.Properties.Resources.Fondo2;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 24);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(826, 444);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // picIsp20
-            // 
-            this.picIsp20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.picIsp20.Image = ((System.Drawing.Image)(resources.GetObject("picIsp20.Image")));
-            this.picIsp20.Location = new System.Drawing.Point(0, 411);
-            this.picIsp20.Name = "picIsp20";
-            this.picIsp20.Size = new System.Drawing.Size(50, 57);
-            this.picIsp20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picIsp20.TabIndex = 2;
-            this.picIsp20.TabStop = false;
             // 
             // BarraHerramientas
             // 
@@ -200,28 +213,12 @@
             this.BtnCalendarios.ToolTipText = "Gestion de Calendarios";
             this.BtnCalendarios.Click += new System.EventHandler(this.BtnCalendarios_Click);
             // 
-            // MnuUsuario
-            // 
-            this.MnuUsuario.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SubMnuUsuario});
-            this.MnuUsuario.Name = "MnuUsuario";
-            this.MnuUsuario.Size = new System.Drawing.Size(123, 20);
-            this.MnuUsuario.Text = "Gestion de Usuarios";
-            // 
-            // SubMnuUsuario
-            // 
-            this.SubMnuUsuario.Name = "SubMnuUsuario";
-            this.SubMnuUsuario.Size = new System.Drawing.Size(119, 22);
-            this.SubMnuUsuario.Text = "Usuarios";
-            this.SubMnuUsuario.Click += new System.EventHandler(this.SubMnuUsuario_Click);
-            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 468);
             this.Controls.Add(this.BarraHerramientas);
-            this.Controls.Add(this.picIsp20);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuPrincipal);
             this.MainMenuStrip = this.menuPrincipal;
@@ -232,7 +229,6 @@
             this.menuPrincipal.ResumeLayout(false);
             this.menuPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picIsp20)).EndInit();
             this.BarraHerramientas.ResumeLayout(false);
             this.BarraHerramientas.PerformLayout();
             this.ResumeLayout(false);
@@ -251,7 +247,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem mnuItemVacuna;
         private System.Windows.Forms.ToolStripMenuItem mnuCalendarios;
-        private System.Windows.Forms.PictureBox picIsp20;
         private System.Windows.Forms.ToolStripMenuItem MnuItemPacientes;
         private System.Windows.Forms.ToolStrip BarraHerramientas;
         private System.Windows.Forms.ToolStripButton BtnTutores;
@@ -261,6 +256,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCalendariosYVacunas;
         private System.Windows.Forms.ToolStripMenuItem MnuUsuario;
         private System.Windows.Forms.ToolStripMenuItem SubMnuUsuario;
+        private System.Windows.Forms.ToolStripMenuItem SubMnuCambioContraseña;
     }
 }
 

@@ -17,7 +17,7 @@ namespace VacunDesktop.Presentation
             InitializeComponent();
             ActualizarGrillaUsuario();
         }
-      
+
         private void ActualizarGrillaUsuario()
         {
             using (var db = new VacunWebContext())
@@ -31,7 +31,7 @@ namespace VacunDesktop.Presentation
                                             TipoDeUsuario = usuario.TipoUsuario
                                         };
                 //cargamos la grilla con la coleccion creada
-                dataGridUsuarios.DataSource = usuariosMostrados.ToList();      
+                dataGridUsuarios.DataSource = usuariosMostrados.ToList();
             }
         }
 
@@ -82,6 +82,13 @@ namespace VacunDesktop.Presentation
             FrmNuevoEditarUsuario.ShowDialog();
             ActualizarGrillaUsuario();
             dataGridUsuarios.CurrentCell = dataGridUsuarios.Rows[filaAEditar].Cells[0];
+        }
+
+        private void btnCambiarContraseña_Click(object sender, EventArgs e)
+        {
+            var idSeleccionado = int.Parse(dataGridUsuarios.CurrentRow.Cells[0].Value.ToString());
+            var frmCambioContraseña = new FrmCambioContrasena(idSeleccionado);
+            frmCambioContraseña.ShowDialog();
         }
     }
 }

@@ -89,6 +89,7 @@ namespace VacunDesktop.Presentation
             // 
             this.txtContraseña.Location = new System.Drawing.Point(206, 137);
             this.txtContraseña.Name = "txtContraseña";
+            this.txtContraseña.PasswordChar = '*';
             this.txtContraseña.Size = new System.Drawing.Size(186, 23);
             this.txtContraseña.TabIndex = 2;
             // 
