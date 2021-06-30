@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using VacunDesktop.ExtensionMethods;
 using VacunDesktop.Models;
 
 namespace VacunDesktop.Presentation
@@ -27,8 +28,9 @@ namespace VacunDesktop.Presentation
          private void ActualizarGrilla()
         {
 
-            using (var db = new VacunWebContext()) { 
+            using (var db = new VacunWebContext()) {
             gridTutores.DataSource = db.Tutores.ToList();
+                gridTutores.OcultarColumnas();
             }
 
         }
@@ -99,7 +101,7 @@ namespace VacunDesktop.Presentation
      
         private void gridTutores_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            ActualizarGrillaPacientes();
+                ActualizarGrillaPacientes();
         }
 
         private void BtnAgregarPaciente_Click(object sender, EventArgs e)
@@ -115,21 +117,21 @@ namespace VacunDesktop.Presentation
             if (gridTutores.CurrentRow != null)
             {
                 var idTutorSeleccionado = int.Parse(gridTutores.CurrentRow.Cells[0].Value.ToString());
-                if (idTutorSeleccionado > 0)
-                {
-                    using var db = new VacunWebContext();
-                    tutor = (Tutor)db.Tutores.Where(t => t.Id == idTutorSeleccionado).Include(p => p.Pacientes).FirstOrDefault();
-                    var pacientesAListar = from paciente in tutor.Pacientes
-                                           select new
-                                           {
-                                               id = paciente.Id,
-                                               nombre = paciente.Nombre + " " + paciente.Apellido,
-                                               FechaNacimiento = paciente.FechaNacimiento,
-                                               Sexo = paciente.Sexo
-                                           };
+                    if (idTutorSeleccionado > 0)
+                    {
+                        using var db = new VacunWebContext();
+                        tutor = (Tutor)db.Tutores.Where(t => t.Id == idTutorSeleccionado).Include(p => p.Pacientes).FirstOrDefault();
+                        var pacientesAListar = from paciente in tutor.Pacientes
+                                               select new
+                                               {
+                                                   id = paciente.Id,
+                                                   nombre = paciente.Nombre + " " + paciente.Apellido,
+                                                   FechaNacimiento = paciente.FechaNacimiento,
+                                                   Sexo = paciente.Sexo
+                                               };
 
-                    GridPacientes.DataSource = pacientesAListar.ToList();
-                }
+                        GridPacientes.DataSource = pacientesAListar.ToList();
+                    }
             }
         }
 

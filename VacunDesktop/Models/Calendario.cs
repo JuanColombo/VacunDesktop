@@ -9,6 +9,9 @@ namespace VacunDesktop.Models
     //AGREGAMOS LA HERENCIA DEL MODELO BASE
     public class Calendario : ModeloBase
     {
+        public int Id { get; set; }
+        [Required]
+        public string Nombre { get; set; }
         [Required]
         public SexoEnum SexoPaciente  { get; set; }
         [Required]

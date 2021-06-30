@@ -9,7 +9,6 @@ namespace VacunDesktop.Models
     {
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Vacuna")]
         public string Nombre { get; set; }
         [Required]
         public int PeriodoAplicacion { get; set; }

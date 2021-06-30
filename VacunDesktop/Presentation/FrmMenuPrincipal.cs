@@ -94,7 +94,7 @@ namespace VacunDesktop.Presentation
                 if (Usuario != null)
                 {
                     //dependiendo el tipo de usuario, habilitamos los distintos menues para que tengan acceso
-                    MnuUsuario.Enabled = Usuario.TipoUsuario == TipoUsuarioEnum.Administrador ? true : false; 
+                    MnuUsuario.Enabled = Usuario.TipoUsuario == TipoUsuarioEnum.Administrador ? true : false;
                 }
                 else
                 {

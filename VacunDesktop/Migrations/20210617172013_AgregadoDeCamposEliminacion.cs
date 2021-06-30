@@ -3,10 +3,36 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VacunDesktop.Migrations
 {
-    public partial class usuario : Migration
+    public partial class AgregadoDeCamposEliminacion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: true),
+                    UsuarioId1 = table.Column<int>(nullable: true),
+                    FechaHoraEliminacion = table.Column<DateTime>(nullable: true),
+                    Eliminado = table.Column<bool>(nullable: false),
+                    User = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    TipoUsuario = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Usuarios_Usuarios_UsuarioId1",
+                        column: x => x.UsuarioId1,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Calendarios",
                 columns: table => new
@@ -14,12 +40,21 @@ namespace VacunDesktop.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: true),
+                    FechaHoraEliminacion = table.Column<DateTime>(nullable: true),
+                    Eliminado = table.Column<bool>(nullable: false),
                     SexoPaciente = table.Column<int>(nullable: false),
                     PrematuroPaciente = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Calendarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Calendarios_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -29,28 +64,21 @@ namespace VacunDesktop.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: true),
+                    FechaHoraEliminacion = table.Column<DateTime>(nullable: true),
+                    Eliminado = table.Column<bool>(nullable: false),
                     Apellido = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tutores", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Usuarios",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(nullable: true),
-                    User = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    TipoUsuario = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tutores_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,12 +88,21 @@ namespace VacunDesktop.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: true),
+                    FechaHoraEliminacion = table.Column<DateTime>(nullable: true),
+                    Eliminado = table.Column<bool>(nullable: false),
                     PeriodoAplicacion = table.Column<int>(nullable: false),
                     Beneficios = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vacunas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Vacunas_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -75,6 +112,9 @@ namespace VacunDesktop.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: true),
+                    FechaHoraEliminacion = table.Column<DateTime>(nullable: true),
+                    Eliminado = table.Column<bool>(nullable: false),
                     Apellido = table.Column<string>(nullable: false),
                     Dni = table.Column<int>(nullable: false),
                     FechaNacimiento = table.Column<DateTime>(nullable: false),
@@ -100,6 +140,12 @@ namespace VacunDesktop.Migrations
                         principalTable: "Tutores",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Pacientes_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -156,6 +202,11 @@ namespace VacunDesktop.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Calendarios_UsuarioId",
+                table: "Calendarios",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DetalleCalendarios_CalendarioId",
                 table: "DetalleCalendarios",
                 column: "CalendarioId");
@@ -176,6 +227,26 @@ namespace VacunDesktop.Migrations
                 column: "TutorId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Pacientes_UsuarioId",
+                table: "Pacientes",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tutores_UsuarioId",
+                table: "Tutores",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_UsuarioId1",
+                table: "Usuarios",
+                column: "UsuarioId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vacunas_UsuarioId",
+                table: "Vacunas",
+                column: "UsuarioId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_VacunasColocadas_PacienteId",
                 table: "VacunasColocadas",
                 column: "PacienteId");
@@ -192,9 +263,6 @@ namespace VacunDesktop.Migrations
                 name: "DetalleCalendarios");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
-
-            migrationBuilder.DropTable(
                 name: "VacunasColocadas");
 
             migrationBuilder.DropTable(
@@ -208,6 +276,9 @@ namespace VacunDesktop.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tutores");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
         }
     }
 }

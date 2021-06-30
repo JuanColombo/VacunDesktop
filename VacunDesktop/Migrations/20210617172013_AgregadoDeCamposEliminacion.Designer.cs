@@ -10,8 +10,8 @@ using VacunDesktop.Models;
 namespace VacunDesktop.Migrations
 {
     [DbContext(typeof(VacunWebContext))]
-    [Migration("20210516181335_usuario")]
-    partial class usuario
+    [Migration("20210617172013_AgregadoDeCamposEliminacion")]
+    partial class AgregadoDeCamposEliminacion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,12 @@ namespace VacunDesktop.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("FechaHoraEliminacion")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -38,7 +44,12 @@ namespace VacunDesktop.Migrations
                     b.Property<int>("SexoPaciente")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Calendarios");
                 });
@@ -86,6 +97,12 @@ namespace VacunDesktop.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("FechaHoraEliminacion")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
@@ -105,11 +122,16 @@ namespace VacunDesktop.Migrations
                     b.Property<int>("TutorId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CalendarioId");
 
                     b.HasIndex("TutorId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Pacientes");
                 });
@@ -125,15 +147,26 @@ namespace VacunDesktop.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("FechaHoraEliminacion")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Tutores");
                 });
@@ -145,7 +178,14 @@ namespace VacunDesktop.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("FechaHoraEliminacion")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
@@ -157,7 +197,15 @@ namespace VacunDesktop.Migrations
                     b.Property<string>("User")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UsuarioId1")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId1");
 
                     b.ToTable("Usuarios");
                 });
@@ -173,6 +221,12 @@ namespace VacunDesktop.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("FechaHoraEliminacion")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -180,7 +234,12 @@ namespace VacunDesktop.Migrations
                     b.Property<int>("PeriodoAplicacion")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Vacunas");
                 });
@@ -210,6 +269,13 @@ namespace VacunDesktop.Migrations
                     b.ToTable("VacunasColocadas");
                 });
 
+            modelBuilder.Entity("VacunDesktop.Models.Calendario", b =>
+                {
+                    b.HasOne("VacunDesktop.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId");
+                });
+
             modelBuilder.Entity("VacunDesktop.Models.DetalleCalendario", b =>
                 {
                     b.HasOne("VacunDesktop.Models.Calendario", "Calendario")
@@ -236,6 +302,31 @@ namespace VacunDesktop.Migrations
                         .HasForeignKey("TutorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("VacunDesktop.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId");
+                });
+
+            modelBuilder.Entity("VacunDesktop.Models.Tutor", b =>
+                {
+                    b.HasOne("VacunDesktop.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId");
+                });
+
+            modelBuilder.Entity("VacunDesktop.Models.Usuario", b =>
+                {
+                    b.HasOne("VacunDesktop.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId1");
+                });
+
+            modelBuilder.Entity("VacunDesktop.Models.Vacuna", b =>
+                {
+                    b.HasOne("VacunDesktop.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId");
                 });
 
             modelBuilder.Entity("VacunDesktop.Models.VacunaColocada", b =>
