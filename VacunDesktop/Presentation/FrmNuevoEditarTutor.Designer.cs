@@ -57,7 +57,7 @@
             // LblApellido
             // 
             this.LblApellido.AutoSize = true;
-            this.LblApellido.Location = new System.Drawing.Point(126, 121);
+            this.LblApellido.Location = new System.Drawing.Point(126, 125);
             this.LblApellido.Name = "LblApellido";
             this.LblApellido.Size = new System.Drawing.Size(54, 15);
             this.LblApellido.TabIndex = 1;
@@ -73,7 +73,7 @@
             // LblEmail
             // 
             this.LblEmail.AutoSize = true;
-            this.LblEmail.Location = new System.Drawing.Point(126, 169);
+            this.LblEmail.Location = new System.Drawing.Point(128, 164);
             this.LblEmail.Name = "LblEmail";
             this.LblEmail.Size = new System.Drawing.Size(39, 15);
             this.LblEmail.TabIndex = 1;
@@ -81,14 +81,14 @@
             // 
             // TxtEmail
             // 
-            this.TxtEmail.Location = new System.Drawing.Point(188, 166);
+            this.TxtEmail.Location = new System.Drawing.Point(188, 161);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(228, 23);
             this.TxtEmail.TabIndex = 2;
             // 
             // BtnGuardar
             // 
-            this.BtnGuardar.Location = new System.Drawing.Point(197, 241);
+            this.BtnGuardar.Location = new System.Drawing.Point(190, 226);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(75, 23);
             this.BtnGuardar.TabIndex = 3;
@@ -98,7 +98,7 @@
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(331, 241);
+            this.BtnCancelar.Location = new System.Drawing.Point(324, 226);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
             this.BtnCancelar.TabIndex = 4;

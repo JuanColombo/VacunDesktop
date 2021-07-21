@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNuevoEditarCalendario));
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.LblNombre = new System.Windows.Forms.Label();
             this.BtnGuardar = new System.Windows.Forms.Button();
@@ -50,9 +49,9 @@
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
-            this.LblNombre.BackColor = System.Drawing.Color.Black;
+            this.LblNombre.BackColor = System.Drawing.Color.Transparent;
             this.LblNombre.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblNombre.ForeColor = System.Drawing.Color.White;
+            this.LblNombre.ForeColor = System.Drawing.Color.Black;
             this.LblNombre.Location = new System.Drawing.Point(97, 79);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(85, 25);
@@ -97,9 +96,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(111, 124);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 25);
@@ -109,9 +108,9 @@
             // chkPrematuro
             // 
             this.chkPrematuro.AutoSize = true;
-            this.chkPrematuro.BackColor = System.Drawing.Color.Black;
+            this.chkPrematuro.BackColor = System.Drawing.Color.Transparent;
             this.chkPrematuro.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.chkPrematuro.ForeColor = System.Drawing.Color.White;
+            this.chkPrematuro.ForeColor = System.Drawing.Color.Black;
             this.chkPrematuro.Location = new System.Drawing.Point(241, 181);
             this.chkPrematuro.Name = "chkPrematuro";
             this.chkPrematuro.Size = new System.Drawing.Size(120, 29);
@@ -122,9 +121,9 @@
             // lblTituloCarga
             // 
             this.lblTituloCarga.AutoSize = true;
-            this.lblTituloCarga.BackColor = System.Drawing.Color.White;
+            this.lblTituloCarga.BackColor = System.Drawing.Color.Transparent;
             this.lblTituloCarga.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTituloCarga.Location = new System.Drawing.Point(1, 2);
+            this.lblTituloCarga.Location = new System.Drawing.Point(80, 9);
             this.lblTituloCarga.Name = "lblTituloCarga";
             this.lblTituloCarga.Size = new System.Drawing.Size(426, 25);
             this.lblTituloCarga.TabIndex = 7;
@@ -134,7 +133,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(580, 326);
             this.Controls.Add(this.lblTituloCarga);
             this.Controls.Add(this.chkPrematuro);

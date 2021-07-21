@@ -11,18 +11,19 @@ using System.Text;
 using System.Windows.Forms;
 using VacunDesktop.AdminData;
 using VacunDesktop.ExtensionMethods;
+using VacunDesktop.Interfaces;
 using VacunDesktop.Models;
 
 namespace VacunDesktop.Presentation
 {
     public partial class FrmCalendarios : Form
     {
-        
-
+        IDbAdmin dbAdmin;
         //contructor (metodo que no devuelve valores que se llama igual que la clase
-        public FrmCalendarios()
+        public FrmCalendarios(IDbAdmin objetoDbAdmin )
         {
             InitializeComponent();
+            dbAdmin = objetoDbAdmin;
             ActualizarGrilla();
             CargarComboVacunas();
         }
@@ -46,12 +47,8 @@ namespace VacunDesktop.Presentation
 
         private void ActualizarGrilla()
         {
-
-
-            grid.DataSource = DbAdminCalendarios.ObtenerTodos();
+            grid.DataSource = dbAdmin.ObtenerTodos();
             grid.OcultarColumnas();
-
-
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
@@ -100,14 +97,14 @@ namespace VacunDesktop.Presentation
             //si responde que si, instanciamos al objeto dbContext y eliminamos el Calendario a traves del id que obtuvimos.
             if (respuesta == DialogResult.Yes)
             {
-                DbAdminCalendarios.Eliminar(idSeleccionado);
+                dbAdmin.Eliminar(idSeleccionado);
                 ActualizarGrilla();   
             }
         }
 
         private void TxtBusqueda_TextChanged(object sender, EventArgs e)
         {
-            grid.DataSource = DbAdminCalendarios.ObtenerTodos(TxtBusqueda.Text);
+            grid.DataSource = dbAdmin.ObtenerTodos(TxtBusqueda.Text);
         }
 
         private void FrmCalendarios_Activated(object sender, EventArgs e)

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VacunDesktop.AdminData;
 using VacunDesktop.Models;
 
 namespace VacunDesktop.Presentation
@@ -30,7 +31,9 @@ namespace VacunDesktop.Presentation
 
         private void mnuItemVacuna_Click(object sender, EventArgs e)
         {
-            var frmVacuna = new FrmVacuna();
+            //var frmVacuna = new FrmVacuna();
+            //frmVacuna.ShowDialog();
+            var frmVacuna = new FrmBase(new DbAdminVacunas(), new FrmNuevoEditarVacuna());
             frmVacuna.ShowDialog();
         }
 
@@ -42,7 +45,9 @@ namespace VacunDesktop.Presentation
 
         private void mnuCalendarios_Click(object sender, EventArgs e)
         {
-            var frmCalendarios = new FrmCalendarios();
+            //var frmCalendarios = new FrmCalendarios(new DbAdminCalendarios());
+            //frmCalendarios.ShowDialog();
+            var frmCalendarios = new FrmBase(new DbAdminCalendarios(),new FrmNuevoEditarCalendario());
             frmCalendarios.ShowDialog();
         }
 
@@ -61,7 +66,7 @@ namespace VacunDesktop.Presentation
 
         private void BtnCalendarios_Click(object sender, EventArgs e)
         {
-            var frmCalendarios = new FrmCalendarios();
+            var frmCalendarios = new FrmCalendarios(new DbAdminCalendarios());
             frmCalendarios.ShowDialog();
         }
 

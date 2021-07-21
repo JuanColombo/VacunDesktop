@@ -6,12 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VacunDesktop.AdminData;
+using VacunDesktop.ExtensionMethods;
 using VacunDesktop.Models;
 
 namespace VacunDesktop.Presentation
 {
     public partial class FrmVacuna : Form
     {
+        DbAdminVacunas dbAdminVacunas = new DbAdminVacunas();
         public FrmVacuna()
         {
             InitializeComponent();
@@ -20,10 +23,8 @@ namespace VacunDesktop.Presentation
 
         private void ActualizarGrillaVacuna()
         {
-            using (var db = new VacunWebContext())
-            {
-                gridVacunas.DataSource = db.Vacunas.ToList();
-            }
+            gridVacunas.DataSource = dbAdminVacunas.ObtenerTodos();
+            gridVacunas.OcultarColumnas();
         }
 
         private void BtnAñadirVacuna_Click(object sender, EventArgs e)
@@ -36,7 +37,7 @@ namespace VacunDesktop.Presentation
         private void BtnEditarVacuna_Click(object sender, EventArgs e)
         {
             //creamos la variable para saber que id de vacuna tenemos seleccionado
-            var idVacunaSeleccionada = int.Parse(gridVacunas.CurrentRow.Cells[0].Value.ToString());
+            var idVacunaSeleccionada = gridVacunas.ObtenerIdSeleccionado();
             var filaAEditar = gridVacunas.CurrentRow.Index;
 
             //abrimos el formulario para la edicion de una Vacuna
@@ -55,7 +56,7 @@ namespace VacunDesktop.Presentation
             //obtenemos el id y el nombre de la vacuna seleccionada en la grilla
             //guardamos en la variable EL ID de la vacuna
 
-            var idVacunaSeleccionada = int.Parse(gridVacunas.CurrentRow.Cells[0].Value.ToString());
+            var idVacunaSeleccionada = gridVacunas.ObtenerIdSeleccionado();
 
             //guardamos en la variable el nombre de la vacuna
             var nombreVacunaSeleccionada = gridVacunas.CurrentRow.Cells[1].Value.ToString();
@@ -67,24 +68,14 @@ namespace VacunDesktop.Presentation
             //si responde que si, instanciamos al objeto dbContext y eliminamos el tutor a traves del id que obtuvimos.
             if (respuesta == DialogResult.Yes)
             {
-                using (var db = new VacunWebContext())
-                {
-                    var vacuna = db.Vacunas.Find(idVacunaSeleccionada);
-                    db.Vacunas.Remove(vacuna);
-                    db.SaveChanges();
-                }
+                dbAdminVacunas.Eliminar(idVacunaSeleccionada);
                 ActualizarGrillaVacuna();
             }
         }
 
         private void TxtBuscarVacuna_TextChanged(object sender, EventArgs e)
         {
-            //instanciamos nuestro objeto db Context
-            using (var db = new VacunWebContext())
-            {
-                //consultamos en el txtBuscarVacuna si el nombre o beneficios contiene la expresion escrita en la grilla.
-                gridVacunas.DataSource = db.Vacunas.Where(v => v.Nombre.Contains(TxtBuscarVacuna.Text) || v.Beneficios.Contains(TxtBuscarVacuna.Text) || v.PeriodoAplicacion.ToString().Contains(TxtBuscarVacuna.Text)).ToList();
-            }
+            gridVacunas.DataSource = dbAdminVacunas.ObtenerTodos(TxtBuscarVacuna.Text);
         }
     }
 }

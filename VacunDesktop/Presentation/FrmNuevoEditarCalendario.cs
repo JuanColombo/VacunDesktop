@@ -6,12 +6,15 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using VacunDesktop.AdminData;
+using VacunDesktop.Interfaces;
 using VacunDesktop.Models;
 
 namespace VacunDesktop.Presentation
 {
-    public partial class FrmNuevoEditarCalendario : Form
+    public partial class FrmNuevoEditarCalendario : Form , IFormBase
     {
+        DbAdminCalendarios dbAdmin = new DbAdminCalendarios();
         public int? IdEditar { get; set; }
 
         public Calendario calendario = new Calendario();
@@ -27,7 +30,7 @@ namespace VacunDesktop.Presentation
             {
                 IdEditar = idSeleccionado;
                 //llamamos al metodo de carga datos
-                CargarDatosDelCalendarioEnPantalla();
+                CargarDatosEnPantalla();
             }
             else
             {
@@ -41,41 +44,29 @@ namespace VacunDesktop.Presentation
             cboSexo.DataSource = Enum.GetValues(typeof(SexoEnum));
         }
 
-        private void CargarDatosDelCalendarioEnPantalla()
+        public void CargarDatosEnPantalla()
         {
-            //instanciamos un objeto DbContext
-            using (var db = new VacunWebContext()){
-
-                //colocamos en las cajas de texto los datos de la BBDD 
-                calendario = db.Calendarios.Find(IdEditar);
+            //a traves del IdCalendarioEditar buscamos los datos del Calendario en el repositorio 
+                calendario = (Calendario)dbAdmin.Obtener(IdEditar);
                 TxtNombre.Text= calendario.Nombre;
                 cboSexo.SelectedIndex = ((int)calendario.SexoPaciente)-1;
                 chkPrematuro.Checked = calendario.PrematuroPaciente;
-                
-            }
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            //instanciamos un objeto DbContext
-            using (var db = new VacunWebContext())  {
+            //le asignamos a sus propiedades el valor de cada uno de los cuadros de texto
+            calendario.Nombre = TxtNombre.Text;
+            calendario.SexoPaciente = (SexoEnum) cboSexo.SelectedValue;
+            calendario.PrematuroPaciente = chkPrematuro.Checked;
 
-                //le asignamos a sus propiedades el valor de cada uno de los cuadros de texto
-                calendario.Nombre = TxtNombre.Text;
-                calendario.SexoPaciente = (SexoEnum) cboSexo.SelectedValue;
-                calendario.PrematuroPaciente = chkPrematuro.Checked;
-
-                //si el id del Calendario a editar es nulo agregamos un Calendario a la tabla
-                if (IdEditar == null)
-                //lo agregamos al objeto Calendario al objeto DbCOntext
-                 db.Calendarios.Add(calendario);
-                else //configuramos el almacenamiento de la modificacion si el id de Calendario es distinto de nulo
-                {
-                    db.Entry(calendario).State = EntityState.Modified;
-                }
-
-                //guardamos los cambios
-                db.SaveChanges();
+            //si el id del Calendario a editar es nulo agregamos un Calendario a la tabla
+            if (IdEditar == null)
+                //lo agregamos al objeto Calendario al repositorio
+                dbAdmin.Agregar(calendario);
+            else //configuramos el almacenamiento de la modificacion si el id de Calendario es distinto de nulo
+            {
+                dbAdmin.Actualizar(calendario);
             }
             //cerramos el formulario
             this.Close();
@@ -116,6 +107,14 @@ namespace VacunDesktop.Presentation
         private bool CompararDatosFormularioConLosDeBBDD()
         {
             return (calendario.Nombre == TxtNombre.Text && calendario.SexoPaciente == (SexoEnum)cboSexo.SelectedValue && calendario.PrematuroPaciente == chkPrematuro.Checked);
+        }
+        public void LimpiarDatosDeLaPantalla()
+        {
+            calendario = new Calendario();
+            TxtNombre.Text = "";
+            cboSexo.SelectedIndex = 0;
+            chkPrematuro.Checked = false;
+            IdEditar = null;
         }
     }
 }

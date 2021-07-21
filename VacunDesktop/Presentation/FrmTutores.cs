@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using VacunDesktop.AdminData;
 using VacunDesktop.ExtensionMethods;
 using VacunDesktop.Models;
 
@@ -16,6 +17,7 @@ namespace VacunDesktop.Presentation
 {
     public partial class FrmTutores : Form
     {
+        DbAdminTutores dbAdminTutores = new DbAdminTutores();
         Tutor tutor { get; set; }
 
         //contructor (metodo que no devuelve valores que se llama igual que la clase
@@ -27,12 +29,8 @@ namespace VacunDesktop.Presentation
 
          private void ActualizarGrilla()
         {
-
-            using (var db = new VacunWebContext()) {
-            gridTutores.DataSource = db.Tutores.ToList();
-                gridTutores.OcultarColumnas();
-            }
-
+            gridTutores.DataSource = dbAdminTutores.ObtenerTodos();
+            gridTutores.OcultarColumnas();
         }
 
         private void BtnNuevo_Click(object sender, EventArgs e)
@@ -48,7 +46,7 @@ namespace VacunDesktop.Presentation
         private void BtnEditar_Click(object sender, EventArgs e)
         {
             //creamos la variable para saber que id de tutor tenemos seleccionado
-            var idTutorSeleccionado = int.Parse(gridTutores.CurrentRow.Cells[0].Value.ToString());
+            var idTutorSeleccionado = gridTutores.ObtenerIdSeleccionado();
             var filaAEditar = gridTutores.CurrentRow.Index;
 
             //abrimos el formulario para la edicion de un  tutor
@@ -66,7 +64,7 @@ namespace VacunDesktop.Presentation
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
             //obtenemos el id y el nombre del tutor seleccionado en la grilla
-            var idTutorSeleccionado = int.Parse(gridTutores.CurrentRow.Cells[0].Value.ToString());
+            var idTutorSeleccionado = gridTutores.ObtenerIdSeleccionado();
 
             //guardamos en la variable el nombre y el apellido del tutor seleccionado
             var nombreTutorSeleccionado = gridTutores.CurrentRow.Cells[1].Value.ToString() +" "+ gridTutores.CurrentRow.Cells[2].Value.ToString();
@@ -78,24 +76,14 @@ namespace VacunDesktop.Presentation
             //si responde que si, instanciamos al objeto dbContext y eliminamos el tutor a traves del id que obtuvimos.
             if (respuesta == DialogResult.Yes)
             {
-                using (var db = new VacunWebContext())
-                {
-                    var tutor = db.Tutores.Find(idTutorSeleccionado);
-                    db.Tutores.Remove(tutor);
-                    db.SaveChanges();
-                }
+                dbAdminTutores.Eliminar(idTutorSeleccionado);
                 ActualizarGrilla();   
             }
         }
 
         private void TxtBusqueda_TextChanged(object sender, EventArgs e)
         {
-            //instanciamos nuestro objeto db Context
-            using (var db = new VacunWebContext())
-            {
-                //consultamos en el txtBusqueda si el nombre apellido o email contiene la expresion escrita en la grilla.
-                gridTutores.DataSource = db.Tutores.Where(t => t.Apellido.Contains(TxtBusqueda.Text) || t.Nombre.Contains(TxtBusqueda.Text) || t.Email.Contains(TxtBusqueda.Text)).ToList();
-            }
+            gridTutores.DataSource = dbAdminTutores.ObtenerTodos(TxtBusqueda.Text);
         }
 
      
@@ -116,8 +104,8 @@ namespace VacunDesktop.Presentation
         {
             if (gridTutores.CurrentRow != null)
             {
-                var idTutorSeleccionado = int.Parse(gridTutores.CurrentRow.Cells[0].Value.ToString());
-                    if (idTutorSeleccionado > 0)
+                var idTutorSeleccionado = gridTutores.ObtenerIdSeleccionado();
+                if (idTutorSeleccionado > 0)
                     {
                         using var db = new VacunWebContext();
                         tutor = (Tutor)db.Tutores.Where(t => t.Id == idTutorSeleccionado).Include(p => p.Pacientes).FirstOrDefault();
