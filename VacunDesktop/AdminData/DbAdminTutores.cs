@@ -62,5 +62,15 @@ namespace VacunDesktop.AdminData
         //return listaTutores.Where(c => c.Nombre.Contains(cadenaBuscada)).ToList();
         return db.Tutores.Where(c => c.Nombre.Contains(cadenaBuscada)).ToList();
     }
-}
+
+        public IEnumerable<object> ObtenerEliminados()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Restaurar(int idSeleccionado)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

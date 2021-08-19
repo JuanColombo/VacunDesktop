@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using VacunDesktop.Interfaces;
 using VacunDesktop.Models;
 using VacunDesktop.Presentation;
@@ -15,6 +16,18 @@ namespace VacunDesktop.AdminData
         {
             using VacunWebContext db = new VacunWebContext();
             return db.Calendarios.ToList();
+        }
+        public IEnumerable<object> ObtenerEliminados()
+        {
+            try { 
+            using VacunWebContext db = new VacunWebContext();
+            return db.Calendarios.Include(u=>u.Usuario).IgnoreQueryFilters().Where(c => c.Eliminado == true).ToList();
+            }
+            catch (InvalidCastException e)
+            {
+                MessageBox.Show($"Ha ocurrido un error: {e.Message}{System.Environment.NewLine} Origen del error: {e.Source}");
+                return null;
+            }
         }
 
         public void Eliminar(int idSeleccionado)
@@ -61,6 +74,17 @@ namespace VacunDesktop.AdminData
                 ////consultamos en el txtBusqueda si el nombre apellido o email contiene la expresion escrita en la grilla.
                 //return listaCalendarios.Where(c => c.Nombre.Contains(cadenaBuscada)).ToList();
             return db.Calendarios.Where(c => c.Nombre.Contains(cadenaBuscada)).ToList();
-        } 
+        }
+
+        public void Restaurar(int idSeleccionado)
+        {
+            using VacunWebContext db = new VacunWebContext();
+            var calendario = db.Calendarios.IgnoreQueryFilters().FirstOrDefault(c=>c.Id == idSeleccionado);
+            //db.Calendarios.Remove(Calendario);
+            //REALIZAMOS TODA LA MECANICA PARA QUE MODIFIQUE EN LA BASE DE DATOS AL CALENDARIO
+            calendario.Eliminado = false;
+            db.Entry(calendario).State = EntityState.Modified;
+            db.SaveChanges();
+        }
     }
 }

@@ -62,5 +62,16 @@ namespace VacunDesktop.AdminData
             //return listaVacunas.Where(c => c.Nombre.Contains(cadenaBuscada)).ToList();
             return db.Vacunas.Where(c => c.Nombre.Contains(cadenaBuscada)).ToList();
         }
+
+        public IEnumerable<object> ObtenerEliminados()
+        {
+            using VacunWebContext db = new VacunWebContext();
+            return db.Vacunas.IgnoreQueryFilters().Where(c => c.Eliminado == true).ToList();
+        }
+
+        public void Restaurar(int idSeleccionado)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

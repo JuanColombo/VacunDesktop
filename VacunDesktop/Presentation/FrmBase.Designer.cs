@@ -34,6 +34,7 @@ namespace VacunDesktop.Presentation
             this.BtnEliminar = new System.Windows.Forms.Button();
             this.BtnEditar = new System.Windows.Forms.Button();
             this.BtnNuevo = new System.Windows.Forms.Button();
+            this.chkVerEliminados = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@ namespace VacunDesktop.Presentation
             this.grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(131, 12);
+            this.grid.Location = new System.Drawing.Point(49, 23);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -52,7 +53,7 @@ namespace VacunDesktop.Presentation
             // 
             // TxtBusqueda
             // 
-            this.TxtBusqueda.Location = new System.Drawing.Point(304, 178);
+            this.TxtBusqueda.Location = new System.Drawing.Point(222, 189);
             this.TxtBusqueda.Name = "TxtBusqueda";
             this.TxtBusqueda.Size = new System.Drawing.Size(252, 23);
             this.TxtBusqueda.TabIndex = 6;
@@ -60,7 +61,7 @@ namespace VacunDesktop.Presentation
             // 
             // BtnEliminar
             // 
-            this.BtnEliminar.Location = new System.Drawing.Point(486, 221);
+            this.BtnEliminar.Location = new System.Drawing.Point(404, 232);
             this.BtnEliminar.Name = "BtnEliminar";
             this.BtnEliminar.Size = new System.Drawing.Size(86, 30);
             this.BtnEliminar.TabIndex = 9;
@@ -70,7 +71,7 @@ namespace VacunDesktop.Presentation
             // 
             // BtnEditar
             // 
-            this.BtnEditar.Location = new System.Drawing.Point(388, 221);
+            this.BtnEditar.Location = new System.Drawing.Point(306, 232);
             this.BtnEditar.Name = "BtnEditar";
             this.BtnEditar.Size = new System.Drawing.Size(83, 30);
             this.BtnEditar.TabIndex = 8;
@@ -80,7 +81,7 @@ namespace VacunDesktop.Presentation
             // 
             // BtnNuevo
             // 
-            this.BtnNuevo.Location = new System.Drawing.Point(287, 221);
+            this.BtnNuevo.Location = new System.Drawing.Point(205, 232);
             this.BtnNuevo.Name = "BtnNuevo";
             this.BtnNuevo.Size = new System.Drawing.Size(80, 30);
             this.BtnNuevo.TabIndex = 7;
@@ -88,11 +89,23 @@ namespace VacunDesktop.Presentation
             this.BtnNuevo.UseVisualStyleBackColor = true;
             this.BtnNuevo.Click += new System.EventHandler(this.BtnNuevo_Click);
             // 
+            // chkVerEliminados
+            // 
+            this.chkVerEliminados.AutoSize = true;
+            this.chkVerEliminados.Location = new System.Drawing.Point(503, 191);
+            this.chkVerEliminados.Name = "chkVerEliminados";
+            this.chkVerEliminados.Size = new System.Drawing.Size(103, 19);
+            this.chkVerEliminados.TabIndex = 10;
+            this.chkVerEliminados.Text = "Ver Eliminados";
+            this.chkVerEliminados.UseVisualStyleBackColor = true;
+            this.chkVerEliminados.CheckedChanged += new System.EventHandler(this.chkVerEliminados_CheckedChanged);
+            // 
             // FrmBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(920, 450);
+            this.ClientSize = new System.Drawing.Size(733, 316);
+            this.Controls.Add(this.chkVerEliminados);
             this.Controls.Add(this.BtnEliminar);
             this.Controls.Add(this.BtnEditar);
             this.Controls.Add(this.BtnNuevo);
@@ -114,5 +127,6 @@ namespace VacunDesktop.Presentation
         private System.Windows.Forms.Button BtnEliminar;
         private System.Windows.Forms.Button BtnEditar;
         private System.Windows.Forms.Button BtnNuevo;
+        private System.Windows.Forms.CheckBox chkVerEliminados;
     }
 }

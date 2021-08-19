@@ -166,6 +166,22 @@ namespace VacunDesktop.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Pacientes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Apellido = "Valle",
+                            Dni = 0,
+                            Domicilio = "Rafael",
+                            Eliminado = false,
+                            FechaNacimiento = new DateTime(2000, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Nombre = "Calendario Varon",
+                            Peso = 1.252,
+                            Prematuro = false,
+                            Sexo = 1,
+                            TutorId = 1
+                        });
                 });
 
             modelBuilder.Entity("VacunDesktop.Models.Tutor", b =>

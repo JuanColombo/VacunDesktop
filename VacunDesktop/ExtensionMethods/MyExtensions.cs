@@ -9,18 +9,26 @@ namespace VacunDesktop.ExtensionMethods
     {
         public static void OcultarColumnas(this DataGridView grid, bool ocultarMostrar = false)
         {
+            //como entendemos que nunca sera necesario ver la columna id hacemos que siempre se oculte 
             if (grid.Columns["UsuarioId"] != null)
-                grid.Columns["UsuarioId"].Visible = ocultarMostrar;
+                grid.Columns["UsuarioId"].Visible = false;
             if (grid.Columns["Usuario"] != null)
                 grid.Columns["Usuario"].Visible = ocultarMostrar;
             if (grid.Columns["Eliminado"] != null)
                 grid.Columns["Eliminado"].Visible = ocultarMostrar;
             if (grid.Columns["FechaHoraEliminacion"] != null)
                 grid.Columns["FechaHoraEliminacion"].Visible = ocultarMostrar;
+            if (grid.Columns["Pacientes"] != null)
+                grid.Columns["Pacientes"].Visible = ocultarMostrar;
+
         }
         public static int ObtenerIdSeleccionado(this DataGridView grid)
         {
             return int.Parse(grid.CurrentRow.Cells[0].Value.ToString());
+        }
+        public static string ObtenerNombreSeleccionado(this DataGridView grid,int nroColumnaNombre)
+        {
+            return grid.CurrentRow.Cells[nroColumnaNombre].Value.ToString();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace VacunDesktop.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS; Database = VacunWebContext; User Id = sa; Password = 1234 ; MultipleActiveResultSets = True; ");
-
+            optionsBuilder.UseSqlServer(@"Server=173.255.225.72; Database = VacunWebContext; User Id = sa; Password = GQ60Vb7w ; MultipleActiveResultSets = True; ");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             #region Definicion de filtros de eliminacion
@@ -30,7 +30,8 @@ namespace VacunDesktop.Models
 
             #endregion
             #region Datos Semilla Pacientes
-
+            //var ivan = new Paciente { Id = 1, Nombre = "Calendario Varon", Apellido = "Valle", FechaNacimiento = Convert.ToDateTime("2000,05,19"),Sexo=SexoEnum.Masculino,Prematuro=false,Peso=1.252,Domicilio="Rafael",TutorId=1};
+            //modelBuilder.Entity<Paciente>().HasData(ivan);
             #endregion
             #region Datos semilla Tutor
             var tutor1 = new Tutor { Id = 1, Nombre = "Juan",Apellido="Carlos", Email="juancarlos1@gmail.com"};

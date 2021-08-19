@@ -40,7 +40,6 @@ namespace VacunDesktop.Presentation
                                    select new { id = vacuna.Id, nombre = vacuna.Nombre };
                 //cargamos el combo de tutores con los existentes en la base de datos
                 CboVacuna.DataSource = listaVacunas.ToList();
-            
                 CboVacuna.SelectedValue = 0;
             }
         }

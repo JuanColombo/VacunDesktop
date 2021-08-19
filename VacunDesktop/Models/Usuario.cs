@@ -13,5 +13,6 @@ namespace VacunDesktop.Models
         public string User { get; set; }
         public string Password { get; set; }
         public TipoUsuarioEnum TipoUsuario { get; set; }
+        public override string  ToString() { return (Nombre); }
     }
 }

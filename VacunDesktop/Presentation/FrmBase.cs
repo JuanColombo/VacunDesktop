@@ -23,8 +23,16 @@ namespace VacunDesktop.Presentation
         }
         private void ActualizarGrilla()
         {
-            grid.DataSource = dbAdmin.ObtenerTodos();
-            grid.OcultarColumnas();
+            if (chkVerEliminados.Checked)
+            {
+                grid.DataSource = dbAdmin.ObtenerEliminados();
+                grid.OcultarColumnas(ocultarMostrar:true);
+            }
+            else
+            {
+                grid.DataSource = dbAdmin.ObtenerTodos();
+                grid.OcultarColumnas();
+            }
         }
 
         private void TxtBusqueda_TextChanged(object sender, EventArgs e)
@@ -67,22 +75,37 @@ namespace VacunDesktop.Presentation
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            //obtenemos el id y el nombre del Calendario seleccionado en la grilla
-            var idSeleccionado = grid.ObtenerIdSeleccionado();
 
-            //guardamos en la variable el nombre y el apellido del Calendario seleccionado
-            var nombreCalendarioSeleccionado = grid.CurrentRow.Cells[1].Value.ToString();
+                //obtenemos el id y el nombre del Calendario seleccionado en la grilla
+                var idSeleccionado = grid.ObtenerIdSeleccionado();
 
-            // preguntar si realmente desea eliminar al Calendario [nombre_Calendario_seleccionado]
-            //colocamos el signo $ para crear la interpolacion de cadenas
-            DialogResult respuesta = MessageBox.Show($"¿Estas seguro que desea eliminar a {nombreCalendarioSeleccionado}?", "Eliminar Calendario", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                //guardamos en la variable el nombre y el apellido del Calendario seleccionado
+                var nombreCalendarioSeleccionado = grid.ObtenerNombreSeleccionado(nroColumnaNombre: 1);
 
-            //si responde que si, instanciamos al objeto dbContext y eliminamos el Calendario a traves del id que obtuvimos.
-            if (respuesta == DialogResult.Yes)
-            {
-                dbAdmin.Eliminar(idSeleccionado);
-                ActualizarGrilla();
-            }
+                // preguntar si realmente desea eliminar al Calendario [nombre_Calendario_seleccionado]
+                //colocamos el signo $ para crear la interpolacion de cadenas
+                DialogResult respuesta = MessageBox.Show($"¿Estas seguro que desea {BtnEliminar.Text} a {nombreCalendarioSeleccionado}?", BtnEliminar.Text+" Calendario", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                //si responde que si, instanciamos al objeto dbContext y eliminamos el Calendario a traves del id que obtuvimos.
+                if (respuesta == DialogResult.Yes && BtnEliminar.Text=="Eliminar")
+                {
+                    dbAdmin.Eliminar(idSeleccionado);
+                    ActualizarGrilla();
+                }
+                if (respuesta == DialogResult.Yes && BtnEliminar.Text == "Restaurar")
+                {
+                    dbAdmin.Restaurar(idSeleccionado);
+                    ActualizarGrilla();
+                }
+
+        }
+        private void chkVerEliminados_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkVerEliminados.Checked)
+                BtnEliminar.Text = "Restaurar";
+            else
+                BtnEliminar.Text = "Eliminar";
+            ActualizarGrilla();
         }
     }
 }
