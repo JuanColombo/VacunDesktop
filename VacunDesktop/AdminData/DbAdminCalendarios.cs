@@ -19,15 +19,8 @@ namespace VacunDesktop.AdminData
         }
         public IEnumerable<object> ObtenerEliminados()
         {
-            try { 
             using VacunWebContext db = new VacunWebContext();
-            return db.Calendarios.Include(u=>u.Usuario).IgnoreQueryFilters().Where(c => c.Eliminado == true).ToList();
-            }
-            catch (InvalidCastException e)
-            {
-                MessageBox.Show($"Ha ocurrido un error: {e.Message}{System.Environment.NewLine} Origen del error: {e.Source}");
-                return null;
-            }
+            return db.Calendarios.Include(u=>u.Usuario).IgnoreQueryFilters().Where(c => c.Eliminado == true).ToList();            
         }
 
         public void Eliminar(int idSeleccionado)
