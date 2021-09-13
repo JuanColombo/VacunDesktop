@@ -29,7 +29,7 @@ namespace VacunDesktop.Presentation
         private void FrmListadoCalendarios_Load(object sender, EventArgs e)
         {
             //abrumos el reporte utilizando la clase FileStream
-            using var fs = new FileStream(@"..\..\..\reportes\ReporteCalendarios.rdlc", FileMode.Open);
+            using var fs = new FileStream(@"reportes\ReporteCalendarios.rdlc", FileMode.Open);
 
             //asignamos el archivo a la propiedad LocalReport del objeto RepoViewer
             reporte.LocalReport.LoadReportDefinition(fs);

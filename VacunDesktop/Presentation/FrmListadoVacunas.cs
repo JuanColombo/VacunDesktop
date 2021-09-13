@@ -16,6 +16,7 @@ namespace VacunDesktop.Presentation
     public partial class FrmListadoVacunas : Form
     {
         private readonly ReportViewer reporte;
+        
         public FrmListadoVacunas()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace VacunDesktop.Presentation
             //agregamos visualmente el visor de reportes al formulario
             Controls.Add(reporte);
         }
+
 
         private void FrmListadoVacunas_Load(object sender, EventArgs e)
         {
@@ -45,5 +47,6 @@ namespace VacunDesktop.Presentation
             reporte.RefreshReport();
 
         }
+
     }
 }

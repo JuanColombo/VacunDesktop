@@ -23,7 +23,7 @@ namespace VacunDesktop
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(DespliegueControladoDeErroresOtroshilos);
 
             Application.ThreadException += new ThreadExceptionEventHandler(DespliegueControladoDeErroresHiloPrincipal);
-            Application.Run(new FrmMenuPrincipal());
+            Application.Run(new FrmInicio());
         }
 
         private static void DespliegueControladoDeErroresOtroshilos(object sender, UnhandledExceptionEventArgs args)

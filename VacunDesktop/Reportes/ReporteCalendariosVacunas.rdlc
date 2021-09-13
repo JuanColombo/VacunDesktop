@@ -47,7 +47,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -235,7 +234,6 @@
         </TablixRowHierarchy>
         <DataSetName>DSCalendariosyVacunas</DataSetName>
         <Top>1.15217cm</Top>
-        <Left>0cm</Left>
         <Height>2.20979cm</Height>
         <Width>18.20144cm</Width>
         <Style>

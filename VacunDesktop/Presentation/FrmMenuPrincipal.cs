@@ -39,8 +39,7 @@ namespace VacunDesktop.Presentation
 
         private void mnuItemSalir_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hasta Luego");
-            this.Close();
+            Application.Exit();
         }
 
         private void mnuCalendarios_Click(object sender, EventArgs e)
@@ -91,6 +90,7 @@ namespace VacunDesktop.Presentation
 
         private void FrmMenuPrincipal_Activated(object sender, EventArgs e)
         {
+            
             if (Usuario == null)
             {
                 //si no hay nadie logeado, entonces mostramos el formulario de Login
