@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using VacunDesktop.Core;
 
 namespace VacunDesktop.Models
 {
@@ -10,7 +11,7 @@ namespace VacunDesktop.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS; Database = VacunWebContext; User Id = sa; Password = 1234 ; MultipleActiveResultSets = True; ");
-            optionsBuilder.UseSqlServer(@"Server=173.255.225.72; Database = VacunWebContext; User Id = sa; Password = GQ60Vb7w ; MultipleActiveResultSets = True; ");
+            optionsBuilder.UseSqlServer(@HelperVacuna.ObtenerCadenaDeConexion());
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             #region Definicion de filtros de eliminacion
@@ -34,10 +35,10 @@ namespace VacunDesktop.Models
             //modelBuilder.Entity<Paciente>().HasData(ivan);
             #endregion
             #region Datos semilla Tutor
-            var tutor1 = new Tutor { Id = 1, Nombre = "Juan",Apellido="Carlos", Email="juancarlos1@gmail.com"};
-            var tutor2 = new Tutor { Id = 2, Nombre = "Pedro", Apellido = "Picapiedra", Email = "pedropicapiedra@gmail.com" };
-            var tutor3 = new Tutor { Id = 3, Nombre = "Enrique", Apellido = "Rodriguez", Email = "enriquerodriguez@gmail.com" };
-            var tutor4 = new Tutor { Id = 4, Nombre = "Pepito", Apellido = "Martinez", Email = "pepitomartinez@gmail.com" };
+            var tutor1 = new Tutor { Id = 1, Nombre = "Juan",Apellido="Carlos", Email="juancarlos1@gmail.com", Contraseña= "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" };
+            var tutor2 = new Tutor { Id = 2, Nombre = "Pedro", Apellido = "Picapiedra", Email = "pedropicapiedra@gmail.com",Contraseña = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" };
+            var tutor3 = new Tutor { Id = 3, Nombre = "Enrique", Apellido = "Rodriguez", Email = "enriquerodriguez@gmail.com",Contraseña = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" };
+            var tutor4 = new Tutor { Id = 4, Nombre = "Pepito", Apellido = "Martinez", Email = "pepitomartinez@gmail.com",Contraseña = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" };
             modelBuilder.Entity<Tutor>().HasData(tutor1,tutor2,tutor3,tutor4);
             #endregion
             #region Datos semilla Vacunas

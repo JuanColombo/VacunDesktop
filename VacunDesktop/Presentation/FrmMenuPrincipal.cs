@@ -19,6 +19,9 @@ namespace VacunDesktop.Presentation
         public FrmMenuPrincipal()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.imagenDeFondo != "")
+                BackgroundImage = Image.FromFile(Properties.Settings.Default.imagenDeFondo);
+
         }
 
         private void mnuItemTutores_Click(object sender, EventArgs e)
@@ -118,6 +121,12 @@ namespace VacunDesktop.Presentation
         {
             var frmCambioContraseña = new FrmCambioContrasena(FrmMenuPrincipal.Usuario.Id);
             frmCambioContraseña.ShowDialog();
+        }
+
+        private void parametrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmParametros = new FrmParametros();
+            frmParametros.ShowDialog();
         }
     }
 }

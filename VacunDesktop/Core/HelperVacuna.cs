@@ -21,5 +21,21 @@ namespace VacunDesktop.Core
             }
             return hashObtenido.ToString();
         }
+        public static string ObtenerCadenaDeConexion()
+        {
+            string servidor = Properties.Settings.Default.servidor;
+            string bbdd = Properties.Settings.Default.bbdd;
+            string usuario = Properties.Settings.Default.usuario;
+            string contrasenia = Properties.Settings.Default.contraseña;
+
+            string cadenaConexion = "Server= " + servidor;
+            cadenaConexion += " ;Database = " + bbdd;
+            cadenaConexion += " ;User Id = " + usuario;
+            cadenaConexion += " ;Password = " + contrasenia;
+            cadenaConexion += " ;MultipleActiveResultSets = true";
+            return cadenaConexion;
+        }
+
+
     }
 }

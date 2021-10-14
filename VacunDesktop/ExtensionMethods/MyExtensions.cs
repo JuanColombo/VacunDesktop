@@ -7,6 +7,28 @@ namespace VacunDesktop.ExtensionMethods
 {
     public static class MyExtensions
     {
+        /// <summary>
+        /// Fecha : 30/09/2021
+        /// Creamos un metodo generico que pregunte en formularios especiales si esta seguro que desea salir 
+        /// </summary>
+        /// <param name="form"></param>
+        public static void MensajeDeAdvertenciaDeSalida(this Form form)
+        {
+            var respuesta = MessageBox.Show($"¿Éstas seguro que deseas salir del formulario {form.Text}?","Atención",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.Yes) form.Close();
+        }
+        public static void HabilitarYDeshabilitarTextBox(this Form form, bool valor)
+        {
+            foreach (Object obj in form.Controls)
+            {
+                if (obj.GetType().Name == "TextBox")
+                {
+                    TextBox o = (TextBox)obj;
+                    o.Enabled = valor;
+                }
+            }
+        }
+
         public static void OcultarColumnas(this DataGridView grid, bool ocultarMostrar = false)
         {
             //como entendemos que nunca sera necesario ver la columna id hacemos que siempre se oculte 
@@ -20,6 +42,8 @@ namespace VacunDesktop.ExtensionMethods
                 grid.Columns["FechaHoraEliminacion"].Visible = ocultarMostrar;
             if (grid.Columns["Pacientes"] != null)
                 grid.Columns["Pacientes"].Visible = ocultarMostrar;
+            if (grid.Columns["Contraseña"] != null)
+                grid.Columns["Contraseña"].Visible = ocultarMostrar;
 
         }
         public static int ObtenerIdSeleccionado(this DataGridView grid)

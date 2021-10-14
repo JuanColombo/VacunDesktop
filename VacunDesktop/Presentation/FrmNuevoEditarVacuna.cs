@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using VacunDesktop.AdminData;
+using VacunDesktop.ExtensionMethods;
 using VacunDesktop.Interfaces;
 using VacunDesktop.Models;
 
@@ -77,7 +78,7 @@ namespace VacunDesktop.Presentation
 
                 else
                 {
-                    PreguntarSiSaleSinGuardar();
+                    this.MensajeDeAdvertenciaDeSalida();
                 }
             }
             else  //CAMINO SI ES MODIFICANDO A UNA VACUNA EXISTENTE
@@ -86,7 +87,7 @@ namespace VacunDesktop.Presentation
                     this.Close();
                 else
                 {
-                    PreguntarSiSaleSinGuardar();
+                    this.MensajeDeAdvertenciaDeSalida();
                 }
             }
         }
@@ -94,13 +95,6 @@ namespace VacunDesktop.Presentation
         private bool CompararDatosFormularioConLosDeBBDD()
         {
             return (vacuna.Nombre == TxtNombreV.Text && vacuna.Beneficios == TxtBeneficios.Text && vacuna.PeriodoAplicacion == NUpDownPeriodo.Value);
-        }
-
-        private void PreguntarSiSaleSinGuardar()
-        {
-            DialogResult respuesta = MessageBox.Show($"¿Estas seguro que desea salir del formulario sin guardar los datos? ", "Datos sin Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (respuesta == DialogResult.Yes)
-                this.Close();
         }
 
         public void LimpiarDatosDeLaPantalla()

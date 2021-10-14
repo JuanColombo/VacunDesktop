@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using VacunDesktop.AdminData;
+using VacunDesktop.ExtensionMethods;
 using VacunDesktop.Models;
 
 namespace VacunDesktop.Presentation
@@ -77,7 +78,7 @@ namespace VacunDesktop.Presentation
 
                 else
                 {
-                    PreguntarSiSaleSinGuardar();
+                    this.MensajeDeAdvertenciaDeSalida();
                 }
             } else  //CAMINO SI ES MODIFICANDO A UN TUTOR EXISTENTE
             {
@@ -85,17 +86,11 @@ namespace VacunDesktop.Presentation
                     this.Close();                    
                 else
                 {
-                    PreguntarSiSaleSinGuardar();                   
+                    this.MensajeDeAdvertenciaDeSalida();
                 }
             }
         }
 
-        private void PreguntarSiSaleSinGuardar()
-        {
-            DialogResult respuesta = MessageBox.Show($"¿Estas seguro que desea salir del formulario sin guardar los datos? ", "Datos sin Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (respuesta == DialogResult.Yes)
-                this.Close();
-        }
         private bool CompararDatosFormularioConLosDeBBDD()
         {
             return (tutor.Apellido == TxtApellido.Text && tutor.Nombre == TxtNombre.Text && tutor.Email == TxtEmail.Text);

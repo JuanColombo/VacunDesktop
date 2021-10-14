@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using VacunDesktop.Core;
+using VacunDesktop.ExtensionMethods;
 using VacunDesktop.Models;
 
 namespace VacunDesktop.Presentation
@@ -78,7 +79,7 @@ namespace VacunDesktop.Presentation
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.MensajeDeAdvertenciaDeSalida();
         }
     }
 }
