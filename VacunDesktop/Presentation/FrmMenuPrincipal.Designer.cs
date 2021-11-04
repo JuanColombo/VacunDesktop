@@ -42,13 +42,13 @@
             this.MnuUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.SubMnuUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.SubMnuCambioContraseña = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.parametrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BarraHerramientas = new System.Windows.Forms.ToolStrip();
             this.BtnTutores = new System.Windows.Forms.ToolStripButton();
             this.BtnCalendarios = new System.Windows.Forms.ToolStripButton();
-            this.configuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.parametrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraHerramientas.SuspendLayout();
@@ -162,6 +162,21 @@
             this.SubMnuCambioContraseña.Text = "Cambio de Contraseña";
             this.SubMnuCambioContraseña.Click += new System.EventHandler(this.SubMnuCambioContraseña_Click);
             // 
+            // configuracionToolStripMenuItem
+            // 
+            this.configuracionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.parametrosToolStripMenuItem});
+            this.configuracionToolStripMenuItem.Name = "configuracionToolStripMenuItem";
+            this.configuracionToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.configuracionToolStripMenuItem.Text = "Configuracion";
+            // 
+            // parametrosToolStripMenuItem
+            // 
+            this.parametrosToolStripMenuItem.Name = "parametrosToolStripMenuItem";
+            this.parametrosToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.parametrosToolStripMenuItem.Text = "Parametros";
+            this.parametrosToolStripMenuItem.Click += new System.EventHandler(this.parametrosToolStripMenuItem_Click);
+            // 
             // mnuItemSalir
             // 
             this.mnuItemSalir.Name = "mnuItemSalir";
@@ -215,26 +230,10 @@
             this.BtnCalendarios.ToolTipText = "Gestion de Calendarios";
             this.BtnCalendarios.Click += new System.EventHandler(this.BtnCalendarios_Click);
             // 
-            // configuracionToolStripMenuItem
-            // 
-            this.configuracionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.parametrosToolStripMenuItem});
-            this.configuracionToolStripMenuItem.Name = "configuracionToolStripMenuItem";
-            this.configuracionToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.configuracionToolStripMenuItem.Text = "Configuracion";
-            // 
-            // parametrosToolStripMenuItem
-            // 
-            this.parametrosToolStripMenuItem.Name = "parametrosToolStripMenuItem";
-            this.parametrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.parametrosToolStripMenuItem.Text = "Parametros";
-            this.parametrosToolStripMenuItem.Click += new System.EventHandler(this.parametrosToolStripMenuItem_Click);
-            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::VacunDesktop.Properties.Resources.Fondo21;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(826, 468);
             this.Controls.Add(this.BarraHerramientas);

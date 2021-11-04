@@ -125,7 +125,8 @@ namespace VacunDesktop.Presentation
 
         private void parametrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmParametros = new FrmParametros();
+            //le pasamos la referencia al propio formulario apra poder manipularlo desde el formulario de parametros
+            var frmParametros = new FrmParametros(this);
             frmParametros.ShowDialog();
         }
     }

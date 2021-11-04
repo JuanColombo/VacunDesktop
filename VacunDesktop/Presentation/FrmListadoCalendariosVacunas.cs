@@ -54,6 +54,7 @@ namespace VacunDesktop.Presentation
 
 
             reporte.LocalReport.DataSources.Add(new ReportDataSource("DSCalendariosyVacunas", calendariosVacunas.ToList()));
+            reporte.SetDisplayMode(DisplayMode.PrintLayout);
             reporte.RefreshReport();
         }
     }

@@ -158,6 +158,7 @@ namespace VacunDesktop.Presentation
             // 
             // btnExaminar
             // 
+            this.btnExaminar.Enabled = false;
             this.btnExaminar.Location = new System.Drawing.Point(391, 274);
             this.btnExaminar.Name = "btnExaminar";
             this.btnExaminar.Size = new System.Drawing.Size(75, 23);
