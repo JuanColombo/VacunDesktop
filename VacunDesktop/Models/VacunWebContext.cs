@@ -10,8 +10,9 @@ namespace VacunDesktop.Models
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS; Database = VacunWebContext; User Id = sa; Password = 1234 ; MultipleActiveResultSets = True; ");
-            optionsBuilder.UseSqlServer(@HelperVacuna.ObtenerCadenaDeConexion());
+
+            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS; Database = VacunWebContext; User Id = sa; Password = 1234 ; MultipleActiveResultSets = True; ");
+            //optionsBuilder.UseSqlServer(Helper.ObtenerCadenaDeConexion());
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             #region Definicion de filtros de eliminacion

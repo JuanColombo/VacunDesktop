@@ -47,13 +47,13 @@ namespace VacunDesktop.Presentation
 
         private void CompararContraseñaActualConBBDD()
         {
-            if (HelperVacuna.ObtenerSha256Hash(txtContraseñaActual.Text) == usuario.Password)
+            if (Helper.ObtenerHashSha256(txtContraseñaActual.Text) == usuario.Password)
             {
                 if (txtContraseñaNueva.Text == txtConfirmacionContraseña.Text)
                 {
                     using (var db = new VacunWebContext())
                     {
-                        usuario.Password = HelperVacuna.ObtenerSha256Hash(txtContraseñaNueva.Text);
+                        usuario.Password = Helper.ObtenerHashSha256(txtContraseñaNueva.Text);
                         db.Entry(usuario).State = EntityState.Modified;
                         MessageBox.Show("Contraseña modificada con exito");
                         db.SaveChanges();

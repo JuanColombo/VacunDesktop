@@ -65,7 +65,10 @@ namespace VacunDesktop.Presentation
             var frmNuevoEditarPaciente = new FrmNuevoEditarPaciente();
             frmNuevoEditarPaciente.ShowDialog();
             ActualizarGrilla();
-            Grid.CurrentCell = Grid.Rows[Grid.RowCount - 1].Cells[0];
+            if (Grid.RowCount < 1){
+                Grid.CurrentCell = Grid.Rows[Grid.RowCount - 1].Cells[0];
+            }
+            
         }
 
         private void BtnEditar_Click(object sender, EventArgs e)

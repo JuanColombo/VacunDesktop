@@ -10,8 +10,8 @@ using VacunDesktop.Models;
 namespace VacunDesktop.Migrations
 {
     [DbContext(typeof(VacunWebContext))]
-    [Migration("20210708174339_TutorContrasenia")]
-    partial class TutorContrasenia
+    [Migration("20211104181015_imagenAModelosTutoryPaciente")]
+    partial class imagenAModelosTutoryPaciente
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -140,6 +140,9 @@ namespace VacunDesktop.Migrations
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
+                    b.Property<byte[]>("Imagen")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -182,6 +185,7 @@ namespace VacunDesktop.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Contraseña")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Eliminado")
@@ -193,6 +197,9 @@ namespace VacunDesktop.Migrations
 
                     b.Property<DateTime?>("FechaHoraEliminacion")
                         .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("Imagen")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -212,6 +219,7 @@ namespace VacunDesktop.Migrations
                         {
                             Id = 1,
                             Apellido = "Carlos",
+                            Contraseña = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
                             Eliminado = false,
                             Email = "juancarlos1@gmail.com",
                             Nombre = "Juan"
@@ -220,6 +228,7 @@ namespace VacunDesktop.Migrations
                         {
                             Id = 2,
                             Apellido = "Picapiedra",
+                            Contraseña = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
                             Eliminado = false,
                             Email = "pedropicapiedra@gmail.com",
                             Nombre = "Pedro"
@@ -228,6 +237,7 @@ namespace VacunDesktop.Migrations
                         {
                             Id = 3,
                             Apellido = "Rodriguez",
+                            Contraseña = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
                             Eliminado = false,
                             Email = "enriquerodriguez@gmail.com",
                             Nombre = "Enrique"
@@ -236,6 +246,7 @@ namespace VacunDesktop.Migrations
                         {
                             Id = 4,
                             Apellido = "Martinez",
+                            Contraseña = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
                             Eliminado = false,
                             Email = "pepitomartinez@gmail.com",
                             Nombre = "Pepito"
@@ -260,12 +271,14 @@ namespace VacunDesktop.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TipoUsuario")
                         .HasColumnType("int");
 
                     b.Property<string>("User")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("UsuarioId")

@@ -93,7 +93,7 @@ namespace VacunDesktop.Presentation
 
         private void FrmMenuPrincipal_Activated(object sender, EventArgs e)
         {
-            
+
             if (Usuario == null)
             {
                 //si no hay nadie logeado, entonces mostramos el formulario de Login

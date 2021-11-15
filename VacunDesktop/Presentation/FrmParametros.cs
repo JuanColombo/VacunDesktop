@@ -72,10 +72,8 @@ namespace VacunDesktop.Presentation
 
             if (ofdAbrirArchivo.FileName != "")
             {
-
                 PbxImagen.Image = new Bitmap(ofdAbrirArchivo.FileName);
                 txtImagen.Text = ofdAbrirArchivo.FileName;
-
             }
         }
     }

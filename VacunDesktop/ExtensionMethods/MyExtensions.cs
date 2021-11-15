@@ -21,9 +21,9 @@ namespace VacunDesktop.ExtensionMethods
         {
             foreach (Object obj in form.Controls)
             {
-                if (obj.GetType().Name == "TextBox")
+                if (obj.GetType().Name == "RadioButton")
                 {
-                    TextBox o = (TextBox)obj;
+                    RadioButton o = (RadioButton)obj;
                     o.Enabled = valor;
                 }
             }

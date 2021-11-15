@@ -62,7 +62,7 @@ namespace VacunDesktop.Presentation
                 //usuario.Password = HelperVacuna.ObtenerSha256Hash(txtContraseña.Text);
                 if (IdEditar == null)
                 { // agregamos el objeto Usuarios a la Base De datos
-                    usuario.Password = HelperVacuna.ObtenerSha256Hash(txtContraseña.Text);
+                    usuario.Password = Helper.ObtenerHashSha256(txtContraseña.Text);
                     db.Usuarios.Add(usuario);
                     MessageBox.Show("Usuario " + usuario.Nombre + " cargado con exito");
                 }
